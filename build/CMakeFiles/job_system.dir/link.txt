@@ -1,0 +1,2 @@
+/usr/bin/ar qc libjob_system.a CMakeFiles/job_system.dir/src/job_system.cpp.o CMakeFiles/job_system.dir/src/worker.cpp.o
+/usr/bin/ranlib libjob_system.a
