@@ -1,1 +1,9 @@
 build/
+Testing/
+*.o
+*.a
+*.d
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
