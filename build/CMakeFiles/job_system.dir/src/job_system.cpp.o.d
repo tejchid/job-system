@@ -1,6 +1,11 @@
 CMakeFiles/job_system.dir/src/job_system.cpp.o: \
+<<<<<<< Updated upstream
   /Users/tejjchid/jobsystem/src/job_system.cpp \
   /Users/tejjchid/jobsystem/include/job_system.h \
+=======
+  /Users/tejjchid/job-system/src/job_system.cpp \
+  /Users/tejjchid/job-system/include/job_system.h \
+>>>>>>> Stashed changes
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
@@ -680,8 +685,14 @@ CMakeFiles/job_system.dir/src/job_system.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_negate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
+<<<<<<< Updated upstream
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/queue \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/deque \
   /Users/tejjchid/jobsystem/src/worker.h \
+=======
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/span \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/span.h \
+  /Users/tejjchid/job-system/src/worker.h \
+>>>>>>> Stashed changes
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
   /Users/tejjchid/jobsystem/src/deque.h

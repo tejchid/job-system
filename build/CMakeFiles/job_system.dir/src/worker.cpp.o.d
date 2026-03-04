@@ -1,6 +1,11 @@
 CMakeFiles/job_system.dir/src/worker.cpp.o: \
+<<<<<<< Updated upstream
   /Users/tejjchid/jobsystem/src/worker.cpp \
   /Users/tejjchid/jobsystem/src/worker.h \
+=======
+  /Users/tejjchid/job-system/src/worker.cpp \
+  /Users/tejjchid/job-system/src/worker.h \
+>>>>>>> Stashed changes
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
@@ -679,9 +684,18 @@ CMakeFiles/job_system.dir/src/worker.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/pointer_to_binary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_negate.h \
+<<<<<<< Updated upstream
   /Users/tejjchid/jobsystem/src/deque.h \
   /Users/tejjchid/jobsystem/include/job_system.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/condition_variable \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/queue \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/deque
+=======
+  /Users/tejjchid/job-system/src/deque.h \
+  /Users/tejjchid/job-system/include/job_system.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/condition_variable \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/span \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/span.h
+>>>>>>> Stashed changes

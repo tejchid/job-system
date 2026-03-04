@@ -165,6 +165,48 @@ job_system_bench/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_bench.dir/build.make CMakeFiles/job_system_bench.dir/build
 .PHONY : job_system_bench/fast
 
+<<<<<<< Updated upstream
+=======
+#=============================================================================
+# Target rules for targets named job_system_tests
+
+# Build rule for target.
+job_system_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 job_system_tests
+.PHONY : job_system_tests
+
+# fast build rule for target.
+job_system_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/build
+.PHONY : job_system_tests/fast
+
+#=============================================================================
+# Target rules for targets named benchmark
+
+# Build rule for target.
+benchmark: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 benchmark
+.PHONY : benchmark
+
+# fast build rule for target.
+benchmark/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/benchmark-build/src/CMakeFiles/benchmark.dir/build.make _deps/benchmark-build/src/CMakeFiles/benchmark.dir/build
+.PHONY : benchmark/fast
+
+#=============================================================================
+# Target rules for targets named benchmark_main
+
+# Build rule for target.
+benchmark_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 benchmark_main
+.PHONY : benchmark_main
+
+# fast build rule for target.
+benchmark_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/benchmark-build/src/CMakeFiles/benchmark_main.dir/build.make _deps/benchmark-build/src/CMakeFiles/benchmark_main.dir/build
+.PHONY : benchmark_main/fast
+
+>>>>>>> Stashed changes
 bench/bench_main.o: bench/bench_main.cpp.o
 .PHONY : bench/bench_main.o
 
@@ -237,6 +279,7 @@ src/worker.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system.dir/build.make CMakeFiles/job_system.dir/src/worker.cpp.s
 .PHONY : src/worker.cpp.s
 
+<<<<<<< Updated upstream
 tests/test_all.o: tests/test_all.cpp.o
 .PHONY : tests/test_all.o
 
@@ -260,6 +303,79 @@ tests/test_all.s: tests/test_all.cpp.s
 tests/test_all.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_all.cpp.s
 .PHONY : tests/test_all.cpp.s
+=======
+tests/test_basic.o: tests/test_basic.cpp.o
+.PHONY : tests/test_basic.o
+
+# target to build an object file
+tests/test_basic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_basic.cpp.o
+.PHONY : tests/test_basic.cpp.o
+
+tests/test_basic.i: tests/test_basic.cpp.i
+.PHONY : tests/test_basic.i
+
+# target to preprocess a source file
+tests/test_basic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_basic.cpp.i
+.PHONY : tests/test_basic.cpp.i
+
+tests/test_basic.s: tests/test_basic.cpp.s
+.PHONY : tests/test_basic.s
+
+# target to generate assembly for a file
+tests/test_basic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_basic.cpp.s
+.PHONY : tests/test_basic.cpp.s
+
+tests/test_dependencies.o: tests/test_dependencies.cpp.o
+.PHONY : tests/test_dependencies.o
+
+# target to build an object file
+tests/test_dependencies.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_dependencies.cpp.o
+.PHONY : tests/test_dependencies.cpp.o
+
+tests/test_dependencies.i: tests/test_dependencies.cpp.i
+.PHONY : tests/test_dependencies.i
+
+# target to preprocess a source file
+tests/test_dependencies.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_dependencies.cpp.i
+.PHONY : tests/test_dependencies.cpp.i
+
+tests/test_dependencies.s: tests/test_dependencies.cpp.s
+.PHONY : tests/test_dependencies.s
+
+# target to generate assembly for a file
+tests/test_dependencies.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_dependencies.cpp.s
+.PHONY : tests/test_dependencies.cpp.s
+
+tests/test_stress.o: tests/test_stress.cpp.o
+.PHONY : tests/test_stress.o
+
+# target to build an object file
+tests/test_stress.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_stress.cpp.o
+.PHONY : tests/test_stress.cpp.o
+
+tests/test_stress.i: tests/test_stress.cpp.i
+.PHONY : tests/test_stress.i
+
+# target to preprocess a source file
+tests/test_stress.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_stress.cpp.i
+.PHONY : tests/test_stress.cpp.i
+
+tests/test_stress.s: tests/test_stress.cpp.s
+.PHONY : tests/test_stress.s
+
+# target to generate assembly for a file
+tests/test_stress.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/job_system_tests.dir/build.make CMakeFiles/job_system_tests.dir/tests/test_stress.cpp.s
+.PHONY : tests/test_stress.cpp.s
+>>>>>>> Stashed changes
 
 # Help Target
 help:
@@ -270,6 +386,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+<<<<<<< Updated upstream
+=======
+	@echo "... benchmark"
+	@echo "... benchmark_main"
+>>>>>>> Stashed changes
 	@echo "... job_system"
 	@echo "... job_system_bench"
 	@echo "... job_system_tests"
@@ -282,9 +403,21 @@ help:
 	@echo "... src/worker.o"
 	@echo "... src/worker.i"
 	@echo "... src/worker.s"
+<<<<<<< Updated upstream
 	@echo "... tests/test_all.o"
 	@echo "... tests/test_all.i"
 	@echo "... tests/test_all.s"
+=======
+	@echo "... tests/test_basic.o"
+	@echo "... tests/test_basic.i"
+	@echo "... tests/test_basic.s"
+	@echo "... tests/test_dependencies.o"
+	@echo "... tests/test_dependencies.i"
+	@echo "... tests/test_dependencies.s"
+	@echo "... tests/test_stress.o"
+	@echo "... tests/test_stress.i"
+	@echo "... tests/test_stress.s"
+>>>>>>> Stashed changes
 .PHONY : help
 
 

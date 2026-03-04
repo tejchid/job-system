@@ -1,31 +1,19 @@
 #pragma once
 
 #include <atomic>
-#include <condition_variable>
 #include <cstddef>
+#include <condition_variable>
 #include <functional>
 #include <initializer_list>
 #include <mutex>
-#include <queue>
+#include <span>
+#include <utility>
 #include <vector>
 
 namespace js {
 
 class Worker;
-
-struct alignas(64) Task {
-    std::function<void()> fn;
-
-    // Dependency tracking
-    std::atomic<int> deps_remaining{0};
-    std::mutex       dep_m;
-    std::vector<Task*> dependents;
-
-    // Completion tracking
-    std::atomic<bool> done{false};
-    std::mutex        wait_m;
-    std::condition_variable wait_cv;
-};
+struct Task;
 
 struct TaskHandle {
     Task* t{nullptr};
@@ -34,17 +22,39 @@ struct TaskHandle {
     constexpr explicit operator bool() const noexcept { return t != nullptr; }
 };
 
-class JobSystem {
-public:
-    explicit JobSystem(std::size_t num_workers = 0);
-    ~JobSystem();
+struct alignas(64) Task {
+    std::function<void()> fn;
+    std::atomic<int> deps_remaining{0};
+    std::mutex dep_m;
+    std::vector<Task*> dependents;
+    std::atomic<bool> done{false};
+    std::mutex wait_m;
+    std::condition_variable wait_cv;
+    char pad[64]{};
+};
 
-    JobSystem(const JobSystem&) = delete;
-    JobSystem& operator=(const JobSystem&) = delete;
+class cppJobSystem {
+public:
+    cppJobSystem();
+    explicit cppJobSystem(std::size_t num_workers);
+    ~cppJobSystem();
+
+    cppJobSystem(const cppJobSystem&) = delete;
+    cppJobSystem& operator=(const cppJobSystem&) = delete;
 
     template <typename F>
     TaskHandle submit(F&& f) {
-        return submit_impl(std::function<void()>(std::forward<F>(f)), {});
+        return submit_impl(std::function<void()>(std::forward<F>(f)),
+                           std::span<Task* const>{});
+    }
+
+    template <typename F>
+    TaskHandle submit(F&& f, std::span<TaskHandle const> deps) {
+        std::vector<Task*> raw;
+        raw.reserve(deps.size());
+        for (auto const& h : deps) raw.push_back(h.t);
+        return submit_impl(std::function<void()>(std::forward<F>(f)),
+                           std::span<Task* const>(raw.data(), raw.size()));
     }
 
     template <typename F>
@@ -52,39 +62,40 @@ public:
         std::vector<Task*> raw;
         raw.reserve(deps.size());
         for (auto const& h : deps) raw.push_back(h.t);
-        return submit_impl(std::function<void()>(std::forward<F>(f)), raw);
+        return submit_impl(std::function<void()>(std::forward<F>(f)),
+                           std::span<Task* const>(raw.data(), raw.size()));
     }
 
-    // Blocks until task is done. Frees the task (single-owner handle semantics).
-    // If shutdown occurs before completion, it returns WITHOUT deleting the task (safe leak > UAF).
     void wait(TaskHandle h);
-
     void shutdown();
+
     bool is_shutting_down() const noexcept {
         return shutting_down_.load(std::memory_order_acquire);
     }
 
     std::size_t worker_count() const noexcept;
-
-    // Called by workers
-    Task* try_steal(std::size_t victim_id);
-    Task* try_dequeue();
-
+    Task* worker_steal(std::size_t victim);
     void execute_task(Task* t, std::size_t worker_id);
     void park_until_work_or_stop();
+    void notify_one_worker();
 
 private:
-    TaskHandle submit_impl(std::function<void()> fn, const std::vector<Task*>& deps);
-    void enqueue_ready(Task* t);
-    void on_complete(Task* t);
+    friend class Worker;
+
+    TaskHandle submit_impl(std::function<void()> fn, std::span<Task* const> deps);
+    void enqueue_ready(Task* t, std::size_t preferred_worker);
+    void on_task_complete(Task* t, std::size_t completing_worker);
 
     std::atomic<bool> shutting_down_{false};
+    std::atomic<int>  runnable_{0};
     std::vector<Worker*> workers_;
 
-    // Shared submission queue
-    alignas(64) std::mutex submit_m_;
-    std::queue<Task*> submit_q_;
-    std::condition_variable submit_cv_;
+    struct alignas(64) ParkState {
+        std::mutex m;
+        std::condition_variable cv;
+        char pad[64]{};
+    };
+    ParkState park_;
 };
 
 } // namespace js
